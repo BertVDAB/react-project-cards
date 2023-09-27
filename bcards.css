@@ -1,0 +1,186 @@
+:root {
+    --color1: hsl(207, 19%, 9%);
+    --color2: hsl(0, 0%, 100%);
+    --color3: white;
+    
+
+}
+
+/* ALLE BOXEN BORDER BOX GEVEN!!! */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.flex-bcards {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    font-size: 1rem;
+    gap: 1rem;
+    line-height: normal;
+    margin-bottom: 1rem;
+
+}
+
+.bcard {
+    color: var(--color2);
+    background-image: url("../img/call-center-app.png");
+    background-size: cover;
+    padding: 10rem 0 0;
+    width: 311px;
+    height: 415px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 500ms ease;
+    /* margin: 20px; */
+    /* position: relative; */
+    border: 2px solid grey;
+}
+
+.bg2 {
+    background-image: url("../img/bertx.png");
+}
+
+.bg3 {
+    background-image: url("../img/lota.png");
+}
+
+.bg4 {
+    background-image: url("../img/lota_2022.png");
+}
+
+.bg5 {
+    background-image: url("../img/css_car_start.png");
+}
+
+.bcard:hover,
+.bcard:focus-within {
+
+
+    transform: scale(1.05);
+    border: 2px solid white;
+
+}
+
+
+
+.bcard-content {
+    --padding: 1.5rem;
+    padding: var(--padding);
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2) 20%, black);
+    transform: translateY(0%);
+    transition: transform 500ms ease;
+    height: 100%;
+    text-align: center;
+}
+
+.bcard-content>a {
+    text-decoration: none;
+}
+
+.bcard-content>a:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.bcard:hover .bcard-content,
+.bcard:focus-within .bcard-content {
+    transform: translateY(0);
+    transition-delay: 250ms;
+}
+
+.bcard:focus-within .bcard-content {
+    transition-duration: 0ms;
+}
+
+.bcard-content>*:not(.bcard-title) {
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+
+.bcard:hover .bcard-content>*:not(.bcard-title),
+.bcard:focus-within .bcard-content>*:not(.bcard-title) {
+    opacity: 1;
+    transition-delay: 500ms;
+}
+
+.bcard-state {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    color: black;
+    text-align: center;
+    font-weight: 100;
+    padding: 2px;
+    background-color: #61dafb;
+    border: 1px solid #61dafb;
+    border-radius: 12px;
+}
+
+.bcard-title {
+    font-weight: 100;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 2.5rem;
+    position: relative;
+    font-size: 1.2rem;
+    background-color: hsla(210, 17%, 9%, 0.53);
+    border: 1px solid hsla(210, 17%, 9%, 0);
+    border-radius: 12px;
+    text-align: center;
+
+    /* transform: translateY(-100%); */
+
+}
+
+/* Lijntje onder de title */
+.bcard-title::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    left: calc(var(--padding) * -1);
+    bottom: -20px;
+    width: calc(100% + var(--padding));
+    background: var(--color3);
+    transform: scale(0);
+    transform-origin: left;
+    transition: transform 2500ms ease;
+}
+
+.bcard:hover .bcard-title::after,
+.bcard:focus-within .bcard-title::after {
+    transform: scaleX(1);
+}
+
+.bcard-body {
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+}
+
+.bbutton {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color1);
+    background-color: var(--color3);
+    padding: 0.5em 1.25em;
+    border-radius: 0.25em;
+    margin-bottom: 1rem;
+    /* Knop enkel klikbaar maken na hover voor mobile geen directe klik mogelijk te maken */
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 200ms, opacity 200ms;
+}
+
+.bcard:hover .bbutton {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s linear 0s, opacity 200ms;
+}
+
+.bi-check-all {
+    color: var(--color3);
+}
